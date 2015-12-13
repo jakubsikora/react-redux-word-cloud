@@ -3,8 +3,8 @@ import axios from 'axios';
 import expect from 'expect';
 import { applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import * as types from '../../constants/actionTypes';
-import * as action from '../../actions/words';
+import { SELECT_WORD, REQUEST_WORDS, RECEIVE_WORDS, FETCH_FAILURE } from '../../constants/actionTypes';
+import { fetchWords, selectWord, requestWords, receiveWords, failureFetch } from '../../actions/words';
 require('sinon-as-promised');
 
 describe('words actions', () => {
@@ -21,15 +21,15 @@ describe('words actions', () => {
         }
       };
 
-      expect(action.selectWord(word)).toEqual({
-        type: types.SELECT_WORD,
+      expect(selectWord(word)).toEqual({
+        type: SELECT_WORD,
         word
       });
     });
 
     it('requestWords should create REQUEST_WORDS action', () => {
-      expect(action.requestWords()).toEqual({
-        type: types.REQUEST_WORDS
+      expect(requestWords()).toEqual({
+        type: REQUEST_WORDS
       });
     });
 
@@ -61,8 +61,8 @@ describe('words actions', () => {
         sentimentScore: 1
       }];
 
-      expect(action.receiveWords(response)).toEqual({
-        type: types.RECEIVE_WORDS,
+      expect(receiveWords(response)).toEqual({
+        type: RECEIVE_WORDS,
         words: expectedWords
       });
     });
@@ -72,8 +72,8 @@ describe('words actions', () => {
           foo: 'bar'
       };
 
-      expect(action.failureFetch(ex)).toEqual({
-        type: types.FETCH_FAILURE,
+      expect(failureFetch(ex)).toEqual({
+        type: FETCH_FAILURE,
         ex
       });
     });
@@ -153,15 +153,15 @@ describe('words actions', () => {
       stubAxios.resolves(expectedResponse);
 
       const expectedActions = [
-        { type: types.REQUEST_WORDS },
+        { type: REQUEST_WORDS },
         {
-          type: types.RECEIVE_WORDS,
+          type: RECEIVE_WORDS,
           words: expectedResponse.data.topics
         }
       ];
 
       const store = mockStore({ words: [] }, expectedActions, done);
-      store.dispatch(action.fetchWords());
+      store.dispatch(fetchWords());
     });
 
     it('creates FETCH_FAILURE when fetching words fails the response', (done) => {
@@ -174,15 +174,15 @@ describe('words actions', () => {
       stubAxios.rejects(expectedResponse);
 
       const expectedActions = [
-        { type: types.REQUEST_WORDS },
+        { type: REQUEST_WORDS },
         {
-          type: types.FETCH_FAILURE,
+          type: FETCH_FAILURE,
           ex: expectedResponse
         }
       ];
 
       const store = mockStore({ words: [] }, expectedActions, done);
-      store.dispatch(action.fetchWords());
+      store.dispatch(fetchWords());
     });
   });
 });

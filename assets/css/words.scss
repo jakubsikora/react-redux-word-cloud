@@ -92,7 +92,7 @@ a {
       transition: transform ease 250ms;
 
       &.visible {
-        transform: translate3d(-$metadata-width, 0, 0);
+        transform: translate3d(-100%, 0, 0);
       }
 
       .metadata-info {

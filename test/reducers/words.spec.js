@@ -1,12 +1,12 @@
 import expect from 'expect';
-import * as reducer from '../../reducers/words';
-import * as type from '../../constants/actionTypes';
+import { selectedWord, words } from '../../reducers/words';
+import { SELECT_WORD, REQUEST_WORDS, RECEIVE_WORDS, FETCH_FAILURE } from '../../constants/actionTypes';
 
 function requestWords() {
-  return reducer.words(
+  return words(
     undefined,
     {
-      type: type.REQUEST_WORDS
+      type: REQUEST_WORDS
     }
   );
 }
@@ -15,7 +15,7 @@ describe('reducers', () => {
   describe('selectWord reducer', () => {
     it('should handle initial state', () => {
       expect(
-        reducer.selectedWord(undefined, {})
+        selectedWord(undefined, {})
       ).toEqual({});
     });
 
@@ -32,10 +32,10 @@ describe('reducers', () => {
       };
 
       expect(
-        reducer.selectedWord(
+        selectedWord(
           undefined,
           {
-            type: type.SELECT_WORD,
+            type: SELECT_WORD,
             word
           }
         )
@@ -46,7 +46,7 @@ describe('reducers', () => {
   describe('words reducer', () => {
     it('shoud handle initial state', () => {
       expect(
-        reducer.words(undefined, {})
+        words(undefined, {})
       ).toEqual({
           isFetching: false,
           items: [],
@@ -65,10 +65,10 @@ describe('reducers', () => {
     it('should handle RECEIVE_WORDS', () => {
       requestWords();
       expect(
-        reducer.words(
+        words(
           undefined,
           {
-            type: type.RECEIVE_WORDS,
+            type: RECEIVE_WORDS,
             words: ['foo', 'bar']
           }
         )
@@ -82,10 +82,10 @@ describe('reducers', () => {
     it('should handle FETCH_FAILURE', () => {
       requestWords();
       expect(
-        reducer.words(
+        words(
           undefined,
           {
-            type: type.FETCH_FAILURE,
+            type: FETCH_FAILURE,
             ex: { foo: 'bar' }
           }
         )

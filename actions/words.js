@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as types from '../constants/actionTypes';
+import { SELECT_WORD, REQUEST_WORDS, RECEIVE_WORDS, FETCH_FAILURE } from '../constants/actionTypes';
 
 const API_URL = '/api/topics.json';
 
@@ -10,7 +10,7 @@ const API_URL = '/api/topics.json';
  */
 export function selectWord(word) {
   return {
-    type: types.SELECT_WORD,
+    type: SELECT_WORD,
     word
   };
 }
@@ -21,7 +21,7 @@ export function selectWord(word) {
  */
 export function requestWords() {
   return {
-    type: types.REQUEST_WORDS
+    type: REQUEST_WORDS
   };
 }
 
@@ -32,7 +32,7 @@ export function requestWords() {
  */
 export function receiveWords(json) {
   return {
-    type: types.RECEIVE_WORDS,
+    type: RECEIVE_WORDS,
     words: json.topics.map(topic => {
       return {
         id: topic.id,
@@ -56,7 +56,7 @@ export function receiveWords(json) {
  */
 export function failureFetch(ex) {
   return {
-    type: types.FETCH_FAILURE,
+    type: FETCH_FAILURE,
     ex
   };
 }

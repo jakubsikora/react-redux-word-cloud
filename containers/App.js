@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import * as action from '../actions/words';
+import { fetchWords, selectWord } from '../actions/words';
 import Words from '../components/Words';
 import MetaData from '../components/MetaData';
 import '../assets/css/words.scss';
@@ -20,7 +20,7 @@ class App extends Component {
 
     // Fetch words from the API.
     const { dispatch } = this.props;
-    dispatch(action.fetchWords());
+    dispatch(fetchWords());
   }
 
   componentWillMount() {
@@ -30,13 +30,13 @@ class App extends Component {
   handleClick() {
     // Select empty word, to hide the metadata sidebar
     const { dispatch } = this.props;
-    dispatch(action.selectWord({}));
+    dispatch(selectWord({}));
   }
 
   handleWordClick(word) {
     // Select word
     const { dispatch } = this.props;
-    dispatch(action.selectWord(word));
+    dispatch(selectWord(word));
   }
 
   render() {

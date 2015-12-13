@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
-import * as action from '../actions/words';
-import * as type from '../constants/actionTypes';
+import { SELECT_WORD, REQUEST_WORDS, RECEIVE_WORDS, FETCH_FAILURE } from '../constants/actionTypes';
 
 /**
  * selectedWord reducer.
@@ -10,7 +9,7 @@ import * as type from '../constants/actionTypes';
  */
 export function selectedWord(state = {}, action) {
   switch (action.type) {
-    case type.SELECT_WORD:
+    case SELECT_WORD:
       return action.word;
     default:
       return state;
@@ -29,16 +28,16 @@ export function words(state = {
   ex: undefined
 }, action) {
   switch (action.type) {
-    case type.REQUEST_WORDS:
+    case REQUEST_WORDS:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case type.RECEIVE_WORDS:
+    case RECEIVE_WORDS:
       return Object.assign({}, state, {
         isFetching: false,
         items: action.words
       });
-    case type.FETCH_FAILURE:
+    case FETCH_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         ex: action.ex
