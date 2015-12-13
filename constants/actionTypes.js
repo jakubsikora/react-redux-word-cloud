@@ -1,0 +1,4 @@
+export const SELECT_WORD = 'SELECT_WORD';
+export const REQUEST_WORDS = 'REQUEST_WORDS';
+export const RECEIVE_WORDS = 'RECEIVE_WORDS';
+export const FETCH_FAILURE = 'FETCH_FAILURE';
