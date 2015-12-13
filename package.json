@@ -8,15 +8,15 @@
     "url": "https://github.com/jakubsikora/react-redux-word-cloud"
   },
   "scripts": {
-    "start": "node server.js",
+    "dev": "node server.js",
+    "start": "npm run dist && node server.production.js",
+    "dist": "rimraf dist && webpack --config webpack.config.production.js --progress --profile --colors -p",
     "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register --require ./test/setup.js",
     "test:watch": "npm test -- --watch"
   },
   "author": "Jakub Sikora",
   "license": "ISC",
-  "engines" : {
-    "node" : ">=0.12.5"
-  },
+  "engine": "node >=0.12.7",
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",
     "babel-core": "^6.0.20",
@@ -34,6 +34,7 @@
     "node-libs-browser": "^0.5.3",
     "node-sass": "^3.4.2",
     "react-addons-test-utils": "^0.14.3",
+    "rimraf": "^2.4.4",
     "sass-loader": "^3.1.2",
     "sinon": "^1.17.2",
     "sinon-as-promised": "^4.0.0",
