@@ -9,14 +9,18 @@ Words positioning was implemented using cardinal directions.
 
 ## Dev mode
 To start the dev mode including hot reloading and redux logger:
+
 `npm run dev`
 
 ## Production mode
 To start the production mode:
+
 `npm start`
 
+## Run
 By default app should be accessible via `http://localhost:3000`.
 
 ## Tests
 To run tests inside repo folder type
+
 `npm test`
