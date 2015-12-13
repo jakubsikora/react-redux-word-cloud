@@ -166,7 +166,7 @@ describe('Utils position', () => {
     expect(positionObj.getPositionN(mockElements2[4], mockElements1[0]))
       .toEqual({
         top: 25,
-        left: 45
+        left: 50
       });
   });
 
@@ -181,7 +181,7 @@ describe('Utils position', () => {
   it('should have getPositionE method working', () => {
     expect(positionObj.getPositionE(mockElements2[4], mockElements1[0]))
       .toEqual({
-        top: 45,
+        top: 50,
         left: 55
       });
   });
@@ -198,7 +198,7 @@ describe('Utils position', () => {
     expect(positionObj.getPositionS(mockElements2[4], mockElements1[0]))
       .toEqual({
         top: 55,
-        left: 35
+        left: 30
       });
   });
 
@@ -213,7 +213,7 @@ describe('Utils position', () => {
   it('should have getPositionW method working', () => {
     expect(positionObj.getPositionW(mockElements2[4], mockElements1[0]))
       .toEqual({
-        top: 45,
+        top: 50,
         left: 25
       });
   });
